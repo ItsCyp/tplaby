@@ -80,11 +80,8 @@ public class TestLabyProf {
 
     @Test
     public void testFinJeu() throws Exception {
-        // Préparez le labyrinthe pour que le personnage soit sur la case de sortie
-        // Et vérifiez si le jeu reconnaît correctement cette condition comme étant la fin
-        // Vous aurez besoin de manipuler les coordonnées ici
         boolean fin = l.etreFini();
-        assertTrue(fin); // Assurez-vous que le jeu identifie correctement que c'est la fin
+        assertTrue(fin);
     }
 
 }
