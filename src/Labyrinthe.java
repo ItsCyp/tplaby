@@ -214,4 +214,12 @@ class Labyrinthe{
     public Sortie getSortie() {
         return sortie;
     }
+
+    /**
+     * methode permettant de retourner les murs
+     * @return les murs
+     */
+    public boolean[][] getMurs() {
+        return murs;
+    }
 }
