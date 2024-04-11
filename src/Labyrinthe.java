@@ -19,7 +19,7 @@ class Labyrinthe{
     static final String GAUCHE = "gauche";
     static final String DROITE = "droite";
 
-
+    // attributs
     private boolean[][] murs;
     private Personnage personnage;
     private Sortie sortie;
@@ -73,6 +73,9 @@ class Labyrinthe{
                 res[0] = x;
                 res[1] = y + 1;
                 break;
+            default:
+                res[0] = -9999;
+                res[1] = -9999;
         }
         return res;
     }
@@ -88,8 +91,7 @@ class Labyrinthe{
         while (!collision) {
             int[] res = getSuivant(this.personnage.getX(), this.personnage.getY(), action);
 
-
-            if (res[0] < 0 || res[0] >= this.murs.length || res[1] < 0 || res[1] >= this.murs[0].length) {
+            if (res[0] == -9999 && res[1] == -9999) {
                 throw new ActionInconnueException("Action inconnue : " + action + ". Les actions possibles sont : haut, bas, gauche, droite.");
             }
 
@@ -195,5 +197,21 @@ class Labyrinthe{
         }catch (IOException e) {
             throw new FichierIncorrectException("Erreur de lecture du fichier : " + nom);
         }
+    }
+
+    /**
+     * methode permettant de retourner le personnage
+     * @return le personnage
+     */
+    public Personnage getPersonnage() {
+        return personnage;
+    }
+
+    /**
+     * methode permettant de retourner la sortie
+     * @return la sortie
+     */
+    public Sortie getSortie() {
+        return sortie;
     }
 }

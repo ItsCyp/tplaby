@@ -12,6 +12,7 @@ public class Position {
     }
 
     /**
+     * getter pour la position x
      * @return la coordonnee x
      */
     public int getX() {
@@ -19,16 +20,25 @@ public class Position {
     }
 
     /**
+     * getter pour la position y
      * @return la coordonnee y
      */
     public int getY() {
         return y;
     }
 
+    /**
+     * setter pour la position x
+     * @param x la coordonnee x
+     */
     public void setX(int x) {
         this.x = x;
     }
 
+    /**
+     * setter pour la position y
+     * @param y la coordonnee y
+     */
     public void setY(int y) {
         this.y = y;
     }
