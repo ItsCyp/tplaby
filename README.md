@@ -11,8 +11,7 @@ comment écrire la méthode `chargerLabyrinthe()`.
 
 Le seul petit problème que nous avons eu est pour les constantes de type `char` et `String` où, au départ, nous
 n'avions pas bien compris qu'elles devaient être `static final` et non pas `final` tout court. Nous l'avons découvert
-quand
-nous devions vérifier les actions (`HAUT`, `BAS`, `GAUCHE`, `DROITE`) dans la méthode `getSuivant()` en utilisant
+quand nous devions vérifier les actions (`HAUT`, `BAS`, `GAUCHE`, `DROITE`) dans la méthode `getSuivant()` en utilisant
 un `switch case`, mais notre environnement de développement (IntelliJ IDEA) nous affichait une erreur sur les `case`
 et nous avons dû aller chercher dans la documentation pour corriger l'erreur.
 
@@ -72,14 +71,12 @@ XX...............PXX
 XXXXXXXXXXXXXXXXXXXX
 ```
 
-Ici le labyrinthe aura 14 lignes et 20 colonnes, le personnage sera à la position (13, 18) et la sortie à la position (
-5, 18).
+Ici le labyrinthe aura 14 lignes et 20 colonnes, le personnage sera à la position (13, 18) et la sortie à la position (5, 18).
 
 ## Présentation des couverture de test + explications :
 
 Comme nous le disons plus haut, nous avons créé la classe `TestLabyrinthe` dans le répertoire `test/` pour tester toutes
-les
-méthodes. Nous avons donc testé toutes les méthodes de la classe `Labyrinthe`. Nous utilisons un `@BeforeEach` pour
+les méthodes. Nous avons donc testé toutes les méthodes de la classe `Labyrinthe`. Nous utilisons un `@BeforeEach` pour
 initialiser le labyrinthe avant chaque test. Nous avons aussi ajouté quelques méthodes dans la classe `Labyrinthe` pour
 que ce soit plus facile de tester les méthodes. Nous avons donc ajouté les méthodes suivantes :
 
@@ -89,50 +86,43 @@ que ce soit plus facile de tester les méthodes. Nous avons donc ajouté les mé
 
 Nous avons donc testé les méthodes suivantes :
 
-> `getChar()` :
-> L'objectif de cette méthode est de retourner le caractère à la position donnée en paramètre. Nous avons donc testé
-> cette méthode en vérifiant que le caractère retourné est bien celui attendu. Nous avons également test si on mettait
-> une
-> position hors limite ce qui renvoie une exception de type `ArrayIndexOutOfBoundsException`.
+`getChar()` :
+L'objectif de cette méthode est de retourner le caractère à la position donnée en paramètre. Nous avons donc testé
+cette méthode en vérifiant que le caractère retourné est bien celui attendu. Nous avons également test si on mettait
+une position hors limite ce qui renvoie une exception de type `ArrayIndexOutOfBoundsException`.
 
 
 
-> `getSuivant()` :
-> Cette méthode a pour but de retourner la position suivante du personnage en fonction de l'action donnée en paramètre (
-> `HAUT`, `BAS`, `DROITE`, `GAUCHE`). Nous avons testé cette méthode en vérifiant que la position retournée est bien
-> celle
-> attendue. Avec ce test nous avons remarqué que nous avions oublié de mettre une valeur par défaut si l'action n'est
-> pas
-> reconnue. Donc nous avons rajouté un `default:` au switch case qui retourne une position illogique (-9999,-9999) et
-> nous
-> utiliserons cette valeur pour vérifier le déplacement du personnage.
+`getSuivant()` :
+Cette méthode a pour but de retourner la position suivante du personnage en fonction de l'action donnée en paramètre (
+`HAUT`, `BAS`, `DROITE`, `GAUCHE`). Nous avons testé cette méthode en vérifiant que la position retournée est bien
+celle attendue. Avec ce test nous avons remarqué que nous avions oublié de mettre une valeur par défaut si l'action n'est
+pas reconnue. Donc nous avons rajouté un `default:` au switch case qui retourne une position illogique (-9999,-9999) et
+nous utiliserons cette valeur pour vérifier le déplacement du personnage.
 
 
 
-> `deplacerPerso()` :
-> L'objectif de cette méthode est de déplacer le personnage en fonction de l'action donnée en paramètre (`HAUT`, `BAS`,
-> `DROITE`, `GAUCHE`). Nous avons testé cette méthode en vérifiant que le personnage est bien déplacé à la position
-> attendue.
-> Nous avons également testé si le personnage ne peut pas se déplacer dans un mur et si le personnage ne peut pas sortir
-> du labyrinthe. Et comme nous en avons parlé juste avant, nous devions aussi vérifier si l'action était incorrecte (
-> donc
-> en vérifiant si la position est (-9999,-9999)) ce qui renvoie l'exception `ActionInconnueException` (que nous avons
-> créée).
+`deplacerPerso()` :
+L'objectif de cette méthode est de déplacer le personnage en fonction de l'action donnée en paramètre (`HAUT`, `BAS`,
+`DROITE`, `GAUCHE`). Nous avons testé cette méthode en vérifiant que le personnage est bien déplacé à la position
+attendue. Nous avons également testé si le personnage ne peut pas se déplacer dans un mur et si le personnage ne peut pas sortir
+du labyrinthe. Et comme nous en avons parlé juste avant, nous devions aussi vérifier si l'action était incorrecte (
+donc en vérifiant si la position est (-9999,-9999)) ce qui renvoie l'exception `ActionInconnueException` (que nous avons créée).
 
 
 
-> `toString()` :
-> Ici, nous devions tout simplement vérifier que le labyrinthe était bien affiché comme voulu.
+`toString()` :
+Ici, nous devions tout simplement vérifier que le labyrinthe était bien affiché comme voulu.
 
 
 
-> `etreFini()` :
-> Pour cette méthode il fallait juste vérifier si le personnage était à la position de la sortie. Nous avons donc testé
-> cette méthode en vérifiant que si le personnage était sur la position de sortie cela renvoyait `True` sinon `False`.
+`etreFini()` :
+Pour cette méthode il fallait juste vérifier si le personnage était à la position de la sortie. Nous avons donc testé
+cette méthode en vérifiant que si le personnage était sur la position de sortie cela renvoyait `True` sinon `False`.
 
 
 
-> `chargerLabyrinthe()` :
-> Et pour finir, la méthode la plus importante, le chargement du labyrinthe. Nous devions vérifier que le labyrinthe
-> était bien chargé en vérifiant les exceptions prévues (fichier introuvable, fichier mal formé, 0 ou plusieurs
-> personnages, 0 ou plusieurs sorties, etc...) et bien sûr en vérifiant que le labyrinthe a bien été chargé.
+`chargerLabyrinthe()` :
+Et pour finir, la méthode la plus importante, le chargement du labyrinthe. Nous devions vérifier que le labyrinthe
+était bien chargé en vérifiant les exceptions prévues (fichier introuvable, fichier mal formé, 0 ou plusieurs
+personnages, 0 ou plusieurs sorties, etc...) et bien sûr en vérifiant que le labyrinthe a bien été chargé.
